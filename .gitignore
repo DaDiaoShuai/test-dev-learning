@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test / coverage reports
+.pytest_cache/
+.coverage
+htmlcov/
+allure-results/
+allure-report/
+test-results/
+playwright-report/
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Env & secrets
+.env
+*.log
