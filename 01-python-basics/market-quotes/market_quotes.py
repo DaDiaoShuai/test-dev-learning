@@ -31,7 +31,10 @@ def get_json(url):
 # 价格在 data["data"]["amount"] 里，取法套路一样。
 def get_crypto_price(symbol):
     # 你来补：拼 url -> get_json(url) -> 取字段 -> float() -> return
-    return None
+    url = f"https://data-api.binance.vision/api/v3/ticker/price?symbol={symbol}"
+    data = get_json(url)
+    price = float(data["price"])
+    return price
 
 
 # TODO 2：抓现货黄金价格（美元/盎司）
@@ -41,7 +44,10 @@ def get_crypto_price(symbol):
 # 价格在 "price" 字段里，本身就是数字，float() 转一下再 return。
 def get_gold_price():
     # 你来补：get_json(地址) -> 取 "price" -> float() -> return
-    return None
+    url = "https://api.gold-api.com/price/XAU"
+    data = get_json(url)
+    price = float(data["price"])
+    return price
 
 
 # TODO 3：抓期货价格（布伦特 BZ=F / WTI CL=F）
@@ -53,7 +59,10 @@ def get_gold_price():
 # 一层一层取，取到后 float() 转成数字再 return。
 def get_yahoo_price(symbol):
     # 你来补：拼 url -> get_json(url) -> 一层层取到 regularMarketPrice -> float() -> return
-    return None
+    url = f"https://query2.finance.yahoo.com/v8/finance/chart/{symbol}"
+    data = get_json(url)
+    price = float(data["chart"]["result"][0]["meta"]["regularMarketPrice"])
+    return price
 
 
 def get_all_quotes():
