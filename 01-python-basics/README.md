@@ -15,6 +15,7 @@
 ## 第一个真实小项目
 
 - [`market-quotes/`](market-quotes/) — 抓取 BTC、ETH、现货黄金、布伦特和 WTI 的真实行情：补完 3 处代码骨架，用 pytest 的 6 条断言验收。任务说明在该目录的 README 里。
+- [`quant-first-lab/`](quant-first-lab/) — 量化第一课加餐（可选）：拉 BTC 1h K 线，算 EMA10/30、RSI14、布林带，给行情判型。说明在该目录的 README 里。
 
 ## 产出
 
