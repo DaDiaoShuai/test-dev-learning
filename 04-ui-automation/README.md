@@ -16,3 +16,7 @@ Playwright（Python 版）+ 页面对象模式（POM）。这是前端背景的�
 ## 过关标准
 
 用例能一条命令跑完出报告；页面小改版后只改页面层，不动用例层。
+
+## 新特性练习场
+
+- [`playwright-1.64-features/`](playwright-1.64-features/) — Playwright 1.64 与测试自动化直接相关的三个新特性练习：`locator.within()` 作用域定位、`--shuffle` 随机顺序、接口上下文的 cookie 管理。学完上面的基础清单后按顺序开练，说明和验收标准都在该目录的 README 里。
