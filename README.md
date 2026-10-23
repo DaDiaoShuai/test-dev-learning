@@ -39,6 +39,8 @@ Frontend to SDET learning repo: Python, test automation and performance testing 
 
 ## 进度
 
+详细进度见 [学习进度看板](PROGRESS.md)（按真实提交更新）。
+
 - [x] 仓库初始化与路线图
 - [ ] 第 1 个月：Python + 测试基础 + 后端基础
 - [ ] 第 2 个月：接口自动化项目 + UI 自动化项目
