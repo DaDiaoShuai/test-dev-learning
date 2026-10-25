@@ -34,7 +34,7 @@ def cmd_add(args):
 def list_task(path=DATA_FILE):
     todos = load_todos(path)
     if not todos:
-        return
+        return []
     for t in todos:
         mark = "✅" if t["done"] else " "
     return todos
