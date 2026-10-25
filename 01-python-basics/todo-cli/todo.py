@@ -8,55 +8,59 @@ from pathlib import Path
 
 DATA_FILE = Path(__file__).with_name("todos.json")
     
-def load_todos():
-    if not DATA_FILE.exists():
+def load_todos(path=DATA_FILE):
+    if not path.exists():
         return []
-    with DATA_FILE.open(encoding="utf-8") as f:
+    with path.open(encoding="utf-8") as f:
         data = json.load(f)
     return data if isinstance(data, list) else [data]
 
-def save_todos(todos):
-    with DATA_FILE.open("w", encoding="utf-8") as f:
+def save_todos(todos, path=DATA_FILE):
+    with path.open("w", encoding="utf-8") as f:
         json.dump(todos, f, ensure_ascii=False, indent=2)
 
-def cmd_add(args):
-    todos = load_todos()
+def cmd_add(args, path=DATA_FILE):
+    todos = load_todos(path)
     new_id = max((t["id"] for t in todos), default=0) + 1
-    todos.append({"id": new_id, "title": args.title, "done": False})
-    save_todos(todos)
+    new_todo = {"id": new_id, "title": args.title, "done": False}
+    todos.append(new_todo)
+    save_todos(todos, path)
     print(f"已添加 #{new_id}: {args.title}")
+    return new_todo
 
-def cmd_list(_args):
-    todos = load_todos()
+def cmd_list(_args, path=DATA_FILE):
+    todos = load_todos(path)
     if not todos:
         print("暂无代办")
         return
     for t in todos:
         mark = "✅" if t["done"] else " "
         print(f"[{mark}] #{t['id']} {t['title']}")
+    return todos
 
-def cmd_done(args):
-    todos = load_todos()
+def cmd_done(args, path=DATA_FILE):
+    todos = load_todos(path)
     for t in todos:
         if t["id"] == args.id:
             t["done"] = True
             save_todos(todos)
             print(f"已完成 #{args.id}")
-            return
+            return t
     print(f"找不到 id={args.id}")
 
-def cmd_delete(args):
-    todos = load_todos()
+def cmd_delete(args, path=DATA_FILE):
+    todos = load_todos(path)
     new_todos = [t for t in todos if t["id"] != args.id]
     if len(new_todos) == len(todos):
         print(f"找不到 id={args.id}")
         return
     save_todos(new_todos)
     print(f"已删除 #{args.id}")
+    return new_todos
             
 
 def main():
-    parser = argparse.ArgumentParser(prog=None, usage=None, description="Todo CLI", epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars='-', fromfile_prefix_chars=None, argument_default=None, conflict_handler='error', add_help=True, allow_abbrev=True)
+    parser = argparse.ArgumentParser(description="Todo CLI")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_add = sub.add_parser("add", help="添加代办")
