@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user TEXT NOT NULL,
+    amount REAL NOT NULL,
+    status TEXT NOT NULL
+);
+
+INSERT INTO orders (user, amount, status) VALUES
+  ('alice',  99.00,  'paid'),
+  ('bob',    158.50, 'pending'),
+  ('carol',  42.00,  'paid'),
+  ('dave',   320.00, 'shipped'),
+  ('eve',    15.80,  'cancelled'),
+  ('frank',  210.00, 'paid'),
+  ('grace',  67.30,  'pending'),
+  ('heidi',  499.99, 'refunded');
+
+.headers on
+.mode column
+SELECT * FROM orders;
+.quit

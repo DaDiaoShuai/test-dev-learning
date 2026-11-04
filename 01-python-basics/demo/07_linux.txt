@@ -1,0 +1,6 @@
+3. Linux（15 分钟）
+练 cd / ls / grep / tail。用 tail -f 跟一个日志文件，没有就自己 echo 几行含 ERROR 的进去，再用 grep ERROR 把报错行捞出来。
+
+验收：能复述这条排查流程就行：接口报错时，先看状态码，再 tail 日志找 ERROR，最后用 SQL 查数据库确认数据。
+
+ tail -f ./07_error.log | grep ERROR 
